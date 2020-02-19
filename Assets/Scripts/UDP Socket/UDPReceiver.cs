@@ -16,6 +16,7 @@ public class UDPReceiver : MonoBehaviour
 	public TextMeshProUGUI ip;
 	public TextMeshProUGUI port;
 	
+	private IPEndPoint anyIP;
 
     void Start()
     {
@@ -30,6 +31,13 @@ public class UDPReceiver : MonoBehaviour
 	{
 		print ("UDP Initialized");
 
+		client = new UdpClient (int.Parse(port.text));		
+		if(ip.text == "Any"){
+			anyIP = new IPEndPoint(IPAddress.Parse(ip.text), int.Parse(port.text));
+		}else{
+			anyIP = new IPEndPoint(IPAddress.Any, int.Parse(port.text));
+		}
+		
 		receiveThread = new Thread (new ThreadStart(ReceiveData)); 
 		receiveThread.IsBackground = true;
 		receiveThread.Start ();
@@ -39,15 +47,8 @@ public class UDPReceiver : MonoBehaviour
 	//	Receive Data and set to action
 	private void ReceiveData()
 	{
-		client = new UdpClient (int.Parse(port.text));
 		while (true)
 		{
-			IPEndPoint anyIP;
-			if(ip.text == "Any"){
-				anyIP = new IPEndPoint(IPAddress.Parse(ip.text), int.Parse(port.text));
-			}else{
-				anyIP = new IPEndPoint(IPAddress.Any, int.Parse(port.text));
-			}
 			byte[] data = client.Receive(ref anyIP);
 			string text = Encoding.UTF8.GetString(data);
 			action = text;
