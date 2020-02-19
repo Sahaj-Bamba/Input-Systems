@@ -11,6 +11,7 @@ public class Receive : MonoBehaviour
     void Start()
     {
         Manager = GameObject.Find("GameManager");
+        Manager.GetComponent<UDPReceiver>().startUDP();
         Debug.Log("Receive Start");
         Activate();
     }
