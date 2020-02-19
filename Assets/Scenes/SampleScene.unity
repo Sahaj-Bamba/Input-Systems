@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 166543805}
   - component: {fileID: 166543804}
   - component: {fileID: 166543803}
+  - component: {fileID: 166543807}
   m_Layer: 5
   m_Name: Receiver Screen
   m_TagString: Untagged
@@ -375,6 +376,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &166543807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166543802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7560f8a31a53d3c4a99a871ad0d74c93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  msg: {fileID: 1595043756}
 --- !u!1 &167583943
 GameObject:
   m_ObjectHideFlags: 0
@@ -4862,6 +4877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94069deacb6bc9a46968aed81ee6b5a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  action: 
 --- !u!114 &2069381381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4874,6 +4890,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a5eb3e43cafaa4ea0f46335da3eeae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ip: {fileID: 315679621}
+  port: {fileID: 874657915}
 --- !u!4 &2069381382
 Transform:
   m_ObjectHideFlags: 0
