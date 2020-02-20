@@ -27,15 +27,32 @@ public class UDPReceiver : MonoBehaviour
 		InitUDP(); 
 	}
 
+	private int sti(string st){
+		int r = 0;
+		int i=0;
+		int n = st.Length;
+		foreach (var ch in st)
+		{
+			i++;
+			if(i==n){
+				break;
+			}
+			r *=10;
+			r += (ch-'0');
+		}
+		return r;
+	}
+
     private void InitUDP()
 	{
 		print ("UDP Initialized");
-
-		client = new UdpClient (int.Parse(port.text));		
+		int pt = sti(port.text);
+		Debug.Log(pt);
+		client = new UdpClient (pt);		
 		if(ip.text == "Any"){
-			anyIP = new IPEndPoint(IPAddress.Parse(ip.text), int.Parse(port.text));
+			anyIP = new IPEndPoint(IPAddress.Parse(ip.text.Split('$')[0]), pt);
 		}else{
-			anyIP = new IPEndPoint(IPAddress.Any, int.Parse(port.text));
+			anyIP = new IPEndPoint(IPAddress.Any, pt);
 		}
 		
 		receiveThread = new Thread (new ThreadStart(ReceiveData)); 
